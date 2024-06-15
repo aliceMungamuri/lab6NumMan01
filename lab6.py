@@ -1,76 +1,47 @@
 '''
 Author:Alice Mungamuri
-KUID: 3117704
-Date:03/05/2024
-Lab: Lab 4 exercise 2
-Last modified: 03/05/2024
-Purpose: List Comparisons
+Homework 2 Questions 1 and 2
 ''''
-list1 = []
-list2=[]
-done = 'N'
-done2 = 'N'
-num = 0
-while done == 'N':
-  num = input("Enter an value for the first list:  ")
-  list1.append(int(num))
-  done = input('Are you done? (y|Y): ').upper()
-while done2 == 'N':
-  num = input("Enter an value for the second list:  ")
-  list2.append(int(num))
-  done2 = input('Are you done? (y|Y): ').upper()
-
-sumList1 = sum(list1)
-sumList2 = sum(list2)
-avgList1 = sumList1 / len(list1) 
-avgList2 = sumList2 / len(list2) 
-numSame = 0
-
-for i in list1:
-  for j in list2:
-    if list2[j] == list1[i]:
-      numSame +=1
-backwardList1 = []
-backwardList2=[]
-index1 = len(list1)-1
-index2 = len(list2)-1
-pal1 = False
-pal2 = False
-while index1>=0:
-    backwardList1.append(list1[index1])
-    index1-=1
-
-if backwardList1 == list1:
-  pal1 = True
-
-while index2>=0:
-    backwardList2.append(list2[index2])
-    index2-=1
-
-if backwardList2 == list2:
-  pal2 = True
+import numpy as np
+import scipy
+from scipy import signal
+import matplotlib.pyplot as plt
+# Question 1
 
 
-print("List Statistics:")
-if sumList1 > sumList2:
-  print(f"The first list has the larger sum of {sumList1}")
-elif sumList1 < sumList2:
-  print(f"The second list has the larger sum of {sumList2}")
-elif sumList1 == sumList2:
-  print(f"They both have the sum of {sumList1}")
-if avgList1 > avgList2:
-  print(f"The first list has the larger average of {avgList1}")
-elif avgList1 < avgList2:
-  print(f"The second list has the larger average of {avgList2}")
-elif avgList1 == avgList2:
-  print(f"They both have the average of {avgList1}")
-print(f"Count of values that appear in both lists: {numSame}")
-if list1 == backwardList1 and list2 == backwardList2:
-  print('Both lists are palindromes')
-elif list1 == backwardList1 or list2 == backwardList2:
-  if list1 == backwardList1:
-   print('The first list is a palindrome')
-  if list2 == backwardList2:
-    print('The second list is a palindrome')
-else:
-  print('The lists are not palindromes')
+def watts_to_dbw(watts):
+    # write your code to here
+   dbw = 10 * math.log10(watts)
+    return dbw
+
+def watts_to_dbm(watts):
+   dbm = 10 * math.log10(1000 * watts)
+    return dbm
+
+def dbw_to_watts(dbw):
+    # write your code to here
+  watts = 10 ** (dbw / 10)
+    return watts
+
+def dbm_to_mW(dbm):
+  mW = 10 ** (dbm / 10)
+   return mW
+
+
+# Question 2
+
+def generate_unit_impulse(length, position):
+  if position < 0 or position >= length:
+        raise ValueError("Position must be within the range [0, length-1].")
+    
+    impSig = [0] * length
+    impSig[position] = 1   
+    return impulse_signal
+    
+def generate_sinusoidal(amplitude, frequency, time):
+    sinSig = amplitude * np.sin(2 * np.pi * frequency * time)
+    return sinSig
+
+def generate_exponential(amplitude, decay_rate, time):
+    expSig = amplitude * np.exp(-decay_rate * time)
+    return expSig
