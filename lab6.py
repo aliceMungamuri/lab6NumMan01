@@ -1,6 +1,6 @@
 '''
 Author:Alice Mungamuri
-Homework 2 Questions 1 and 2
+Homework 2 Questions 1,2,3
 ''''
 import numpy as np
 import scipy
